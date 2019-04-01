@@ -95,7 +95,7 @@ public class StartActivity extends AppCompatActivity implements QuestionsRequest
                 else {
                     numberOfQuestions = Integer.parseInt(numQuestions.getText().toString());
                     // 100 questions max
-                    if (numberOfQuestions <= 100) {
+                    if (numberOfQuestions >= 100) {
                         Toast.makeText(context, "maximum number of questions is 100",
                                 Toast.LENGTH_SHORT).show();
                         ApiUrl += 100;

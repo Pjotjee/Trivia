@@ -6,10 +6,16 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +56,8 @@ public class GameActivity extends AppCompatActivity implements Serializable {
         Intent intent = getIntent();
         questions = (ArrayList<Question>) intent.getSerializableExtra("questions");
         // set the number of the question and the score
+//        int questionCount = 0;
+//        int score = 0;
         setInfo(questionCount, score);
         // get the question and bind it to the layout's views
         Question currentQuestion = questions.get(questionCount);
@@ -162,6 +170,20 @@ public class GameActivity extends AppCompatActivity implements Serializable {
     public String getQuestion(Question question) {
         return  Html.fromHtml(question.getQuestion(), version).toString();
     }
+//    void getQuestion(HighscoreGetRequest.Callback activity) {
+//        this.activity = activity;
+//        //this.questionCount = questionCount;
+//        RequestQueue queue = Volley.newRequestQueue(context);
+//        String url = "https://opentdb.com/api.php?amount=" + questionCount + "&type=" + questionType;
+//
+//        try {
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, this, this);
+//            queue.add(jsonObjectRequest);
+//        }
+//        catch(Exception error) {
+//            Log.e("error", error.getMessage());
+//        }
+//    }
 
     //** make an array of the answers */
     public ArrayList<String> getShuffledAnswers(Question question) {
